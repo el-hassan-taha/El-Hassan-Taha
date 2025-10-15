@@ -44,7 +44,26 @@
 
 ---
 
-## ⚡ Featured Project  
+## ⚡ Featured Projects
+
+### 🎓 Teacher-Student Management System (New!)
+**Full-stack Next.js 14 + Supabase application**
+
+A comprehensive Arabic web application for managing students, attendance, tasks, and exams with RTL support.
+
+**Tech Stack:** Next.js 14, TypeScript, Tailwind CSS, Supabase, TanStack Query
+
+**Features:**
+- ✅ Dual authentication (Teacher & Student)
+- ✅ Student management with search and filters
+- ✅ Task management with auto-assignment
+- ✅ Performance analytics and metrics
+- ✅ Fully Arabic interface with RTL support
+- ✅ Production-ready with comprehensive documentation
+
+📂 **[View Project →](./teacher-student-app/)**
+
+---
 
 ### 🛒 E-Commerce Web Platform (MVP)  
 - ✅ Built with **ASP.NET Core, Blazor, EF, SQL Server**  
