@@ -1,36 +1,168 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# نظام إدارة الطلاب - Teacher-Student Management System
 
-## Getting Started
+نظام شامل لإدارة الطلاب والحضور والمهام والامتحانات باللغة العربية مع دعم RTL.
 
-First, run the development server:
+## المميزات
 
+### للمعلم
+- **لوحة التحكم**: عرض إحصائيات شاملة عن الطلاب والمهام والامتحانات
+- **إدارة الطلاب**: إضافة وتعديل ومشاهدة بيانات الطلاب مع نظام بحث وتصفية متقدم
+- **إدارة المهام**: إنشاء مهام جديدة مع التعيين التلقائي للطلاب حسب الصف والفصل
+- **إدارة الحضور**: تسجيل الحضور الأسبوعي (قيد التطوير)
+- **إدارة الامتحانات**: إنشاء امتحانات وإدخال الدرجات (قيد التطوير)
+- **الإعدادات**: حذف جماعي للطلاب (قيد التطوير)
+
+### للطالب
+- **الصفحة الرئيسية**: عرض المعلومات الشخصية وتحليل الأداء
+- **سجل الحضور**: عرض جميع سجلات الحضور (قيد التطوير)
+- **المهام**: عرض المهام المكلفة مع حالة الإنجاز (قيد التطوير)
+- **الامتحانات**: عرض نتائج الامتحانات (قيد التطوير)
+
+## التقنيات المستخدمة
+
+- **Next.js 14** - إطار عمل React مع App Router
+- **TypeScript** - لغة البرمجة
+- **Tailwind CSS** - تصميم واجهة المستخدم
+- **Supabase** - قاعدة البيانات والمصادقة
+- **TanStack Query** - إدارة حالة البيانات والتخزين المؤقت
+- **React Hook Form + Zod** - إدارة النماذج والتحقق من البيانات
+- **Shadcn/UI** - مكتبة مكونات واجهة المستخدم
+- **Lucide React** - أيقونات
+- **jsPDF** - إنشاء تقارير PDF (سيتم إضافته)
+
+## البدء
+
+### المتطلبات الأساسية
+
+- Node.js 18+ مثبت على جهازك
+- حساب Supabase (مجاني)
+
+### التثبيت
+
+1. انتقل إلى مجلد المشروع:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+cd teacher-student-app
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. ثبت الحزم المطلوبة:
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. أنشئ ملف `.env.local` من `.env.example`:
+```bash
+cp .env.example .env.local
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. قم بتحديث متغيرات البيئة في `.env.local`:
+```
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+```
 
-## Learn More
+### إعداد قاعدة البيانات
 
-To learn more about Next.js, take a look at the following resources:
+1. أنشئ مشروع جديد في [Supabase](https://supabase.com)
+2. افتح SQL Editor في Supabase Dashboard
+3. انسخ والصق محتوى ملف `supabase-schema.sql`
+4. نفذ الاستعلام لإنشاء الجداول والفهارس
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### تشغيل المشروع
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+# للتطوير
+npm run dev
 
-## Deploy on Vercel
+# للبناء
+npm run build
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+# لتشغيل النسخة المبنية
+npm start
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+افتح [http://localhost:3000](http://localhost:3000) في المتصفح.
+
+## هيكل المشروع
+
+```
+teacher-student-app/
+├── app/                      # صفحات Next.js (App Router)
+│   ├── teacher/             # صفحات المعلم
+│   │   ├── dashboard/       # لوحة التحكم
+│   │   ├── students/        # إدارة الطلاب
+│   │   ├── tasks/           # إدارة المهام
+│   │   ├── attendance/      # إدارة الحضور
+│   │   ├── exams/           # إدارة الامتحانات
+│   │   └── settings/        # الإعدادات
+│   ├── student/             # صفحات الطالب
+│   │   ├── home/            # الصفحة الرئيسية
+│   │   ├── attendance/      # سجل الحضور
+│   │   ├── tasks/           # المهام
+│   │   └── exams/           # الامتحانات
+│   ├── layout.tsx           # التخطيط الرئيسي
+│   ├── page.tsx             # صفحة تسجيل الدخول
+│   └── globals.css          # الأنماط العامة
+├── components/              # المكونات القابلة لإعادة الاستخدام
+│   ├── layout/              # مكونات التخطيط
+│   ├── providers/           # مزودات السياق
+│   └── ui/                  # مكونات واجهة المستخدم
+├── lib/                     # وظائف مساعدة
+│   ├── auth.ts             # وظائف المصادقة
+│   ├── supabase.ts         # عميل Supabase
+│   └── utils.ts            # وظائف مساعدة عامة
+├── types/                   # تعريفات TypeScript
+│   └── database.ts         # أنواع قاعدة البيانات
+└── supabase-schema.sql     # مخطط قاعدة البيانات
+```
+
+## قاعدة البيانات
+
+### الجداول
+
+1. **students** - معلومات الطلاب
+2. **weeks** - الأسابيع الدراسية (1-19)
+3. **attendance** - سجلات الحضور اليومية
+4. **tasks** - المهام الدراسية
+5. **student_tasks** - ربط الطلاب بالمهام
+6. **exams** - الامتحانات
+7. **student_exams** - درجات الطلاب في الامتحانات
+
+### الميزات الأمنية
+
+- تفعيل Row Level Security (RLS) على جميع الجداول
+- سياسات منفصلة للمعلمين والطلاب
+- المعلمون: وصول كامل لجميع البيانات
+- الطلاب: وصول للقراءة فقط لبياناتهم الخاصة
+
+## المصادقة
+
+### المعلم
+- تسجيل الدخول بالبريد الإلكتروني وكلمة المرور
+- استخدام Supabase Auth
+
+### الطالب
+- تسجيل الدخول بالرقم القومي فقط
+- التحقق من وجود الطالب في قاعدة البيانات
+
+## التطوير المستقبلي
+
+- [ ] إكمال صفحة إدارة الحضور مع واجهة جدولية
+- [ ] إضافة إدارة الامتحانات وإدخال الدرجات
+- [ ] تطبيق صفحة تفاصيل الطالب الفردية
+- [ ] إضافة ميزة تصدير التقارير بصيغة PDF بالعربية
+- [ ] تطبيق ميزة الحذف الجماعي في الإعدادات
+- [ ] إضافة إشعارات في الوقت الفعلي
+- [ ] تحسين التحليلات والرسوم البيانية
+- [ ] إضافة نظام الإشعارات للطلاب وأولياء الأمور
+
+## المساهمة
+
+المشروع تحت التطوير النشط. المساهمات مرحب بها!
+
+## الترخيص
+
+MIT License
+
+## تواصل معنا
+
+للأسئلة والدعم، يرجى فتح Issue في GitHub.
