@@ -60,11 +60,6 @@
   <img src="https://github-readme-stats.vercel.app/api?username=El-Hassan-Taha&show_icons=true&theme=radical" alt="GitHub Stats" height="160"/>
   <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=El-Hassan-Taha&layout=compact&theme=radical" alt="Top Languages" height="160"/>
 </p>
-
-<p align="center">
-  <img src="https://github-readme-streak-stats.herokuapp.com?user=El-Hassan-Taha&theme=radical&hide_border=true" alt="GitHub Streak" height="160"/>
-</p>
-
 ---
 
 ## 📫 Connect with Me  
